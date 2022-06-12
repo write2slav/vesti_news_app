@@ -32,6 +32,14 @@ public class Utils {
         return list;
     }
 
+    public static String getDate() {
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormat.format(date);
+
+        return strDate;
+    }
+
     public static void createFileIfNotExist() {
         try {
             File myObj = new File(FILE_NAME);
@@ -54,13 +62,41 @@ public class Utils {
         writer.close();
     }
 
-    public static String getDate() {
-        Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss Z");
-        String strDate = dateFormat.format(date);
-
-        return strDate;
+    public static String readFromFile() {
+        String data = new String();
+        StringBuilder builder = new StringBuilder();
+        try {
+            File myObj = new File(FILE_NAME);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                builder.append(myReader.nextLine());
+                builder.append('\n');
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return data = builder.toString();
     }
+    public static String [] convertToCSV (String text){
 
+        String lines[] = text.split("\\r?\\n");
+
+        List <String []> table = new ArrayList <String []>();
+
+        System.out.println(lines.length);
+        System.out.println(lines[0]);
+        for (String line: lines) {
+            String row [] = line.split(",");
+            StringBuilder separated = new StringBuilder();
+            for(String header: row){
+
+                separated.append(header.replaceAll("\\s(?=(?:[^'\"`]*(['\"`])[^'\"`]*\\1)*[^'\"`]*$)", ","));
+            }
+        }
+
+        return lines;
+    }
 }
 

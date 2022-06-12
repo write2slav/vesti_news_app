@@ -9,13 +9,13 @@ public class NewsTask extends TimerTask  {
         listOfNewsHeaders.add(0, Utils.getDate());
         String datedNewsHeaders = listOfNewsHeaders.toString().substring(1, listOfNewsHeaders.toString().length() - 1);
 
-        System.out.println(datedNewsHeaders);
-
         Utils.createFileIfNotExist();
         try {
             Utils.appendToFile(datedNewsHeaders);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Task is finished");
+
     }
 }

@@ -9,6 +9,7 @@ public class App {
         Timer timer = new Timer(); // creating timer
         TimerTask task = new NewsTask(); // creating timer task
         timer.schedule(task, 0, 1800000);
+        Utils.convertToCSV(Utils.readFromFile());
     }
 }
 
