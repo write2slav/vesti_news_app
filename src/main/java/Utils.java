@@ -52,7 +52,6 @@ public class Utils {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
     }
 
     public static void appendToFile(String str) throws IOException {
@@ -95,7 +94,6 @@ public class Utils {
                 separated.append(header.replaceAll("\\s(?=(?:[^'\"`]*(['\"`])[^'\"`]*\\1)*[^'\"`]*$)", ","));
             }
         }
-
         return lines;
     }
 }
