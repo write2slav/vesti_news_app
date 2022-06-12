@@ -6,6 +6,7 @@ import java.util.TimerTask;
 public class App {
     public static void main(String[] args){
 
+
         Timer timer = new Timer(); // creating timer
         TimerTask task = new NewsTask(); // creating timer task
         timer.schedule(task, 0, 1800000);
